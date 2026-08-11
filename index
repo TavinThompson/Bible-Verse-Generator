@@ -75,12 +75,15 @@
       cursor: pointer;
     }
 
+    button:active {
+      transform: scale(0.97);
+    }
+
     .footer {
       margin-top: 25px;
       font-size: 12px;
-      opacity: .4;
+      opacity: 0.4;
     }
-
   </style>
 </head>
 
@@ -107,67 +110,34 @@
   </div>
 
 
-<script>
-
-const quotes = [
-
-  "Start before you feel ready.",
-
-  "Small steps become big changes.",
-
-  "You don't need more time. You need to use the time you have.",
-
-  "Your future is built by what you do today.",
-
-  "Keep going. You're closer than you think.",
-
-  "A difficult road can still lead somewhere beautiful.",
-
-  "Do something today that your future self will appreciate.",
-
-  "Consistency will take you places motivation never could.",
-
-  "You can start over without starting from nothing.",
-
-  "One good decision can change the direction of your entire day.",
-
-  "Be willing to be a beginner.",
-
-  "Progress doesn't have to be dramatic to be real.",
-
-  "The life you want is built one ordinary day at a time.",
-
-  "You are allowed to outgrow the version of yourself that got you here.",
-
-  "Take the risk or lose the chance.",
-
-  "Make today worth remembering.",
-
-  "The hardest part is usually starting.",
-
-  "Don't underestimate what you can accomplish in a year.",
-
-  "You don't have to see the whole path to take the next step.",
-
-  "Build a life you don't constantly need a break from."
-
-];
+  <!-- Load the quote database -->
+  <script src="quotes.js"></script>
 
 
-function showRandomQuote() {
+  <!-- Random quote logic -->
+  <script>
 
-  const randomNumber =
-    Math.floor(Math.random() * quotes.length);
+    let lastQuote = -1;
 
-  document.getElementById("quote").innerText =
-    quotes[randomNumber];
+    function showRandomQuote() {
 
-}
+      let randomNumber;
+
+      do {
+        randomNumber = Math.floor(Math.random() * quotes.length);
+      }
+      while (randomNumber === lastQuote && quotes.length > 1);
+
+      lastQuote = randomNumber;
+
+      document.getElementById("quote").innerText =
+        quotes[randomNumber];
+    }
 
 
-showRandomQuote();
+    showRandomQuote();
 
-</script>
+  </script>
 
 </body>
 </html>
